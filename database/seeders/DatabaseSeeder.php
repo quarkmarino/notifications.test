@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->admin()->create();
 
-        User::factory(24)->create();
+        User::factory(5)->create();
     }
 }

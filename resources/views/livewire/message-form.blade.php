@@ -1,6 +1,6 @@
 <form class="p-6 text-gray-900 flex flex-col">
     @if (session()->has('message'))
-        <div class="rounded bg-green-300 text-lime-900 p-3">
+        <div class="rounded bg-green-600 text-lime-900 p-3">
             <div class="alert alert-success">
                 {{ session('message') }}
             </div>

@@ -4,10 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-
 import './bootstrap';
 import { createApp } from 'vue';
-
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,8 +15,10 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
+import MessageFormComponent from './components/MessageFormComponent.vue';
+app.component('message-form-component', MessageFormComponent);
 
 /**
  * The following block of code may be used to automatically register your
