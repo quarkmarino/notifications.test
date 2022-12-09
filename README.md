@@ -95,18 +95,21 @@ We will evaluate:
     ```sh
     sail art migrate
     ```
-5. Run artisan db seeders (admin user only sedding or full db seeding)
-    5.1 Run admin user seeder only
+5. Run artisan db seeders
     ```sh
     sail art db:seed
     ```
-6. Visit http://notifications.test
-    6.1 login with the following credentials
+6. Compile Scripts and Styles
+    ```sh
+    sail yarn run dev
+    ```
+7. Visit http://notifications.test
+    7.1 login with the following credentials
       user: admin@notifications.test
       password: password
-    6.1 visit http://notifications.test/livewire
+    7.1 visit http://notifications.test/livewire
       Post a message from the form (via Livewire)
-    6.2 visit http://notifications.test/vuejs
+    7.2 visit http://notifications.test/vuejs
       Post a message from the form (via VueJs)
     6.3 visit http://notifications.test/logs
       Inspect the logs table
