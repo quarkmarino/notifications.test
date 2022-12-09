@@ -1,7 +1,7 @@
 import _ from 'lodash';
 window._ = _;
 
-import 'bootstrap';
+// import 'bootstrap';
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -10,10 +10,10 @@ import 'bootstrap';
  */
 
 import axios from 'axios';
-import Alpine from 'alpinejs';
+// import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
-Alpine.start();
+// window.Alpine = Alpine;
+// Alpine.start();
 
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

@@ -47,14 +47,16 @@ class MessageForm extends Component
 
         $message = new Message([
             'content' => $this->content,
-            'category' => CategoryEnum::tryFrom($this->category)
+            'category' => $this->category
         ]);
 
         if ($message->save()) {
-            session()->flash('message', 'The notification has been saved and it will broadcasted to the respective users shortly.');
+            session()->flash('message', __('notifications.events.created.success'));
 
             $this->content = '';
-
+        } else {
+            session()->flash('message', __('notifications.events.created.failure'));
         }
+
     }
 }

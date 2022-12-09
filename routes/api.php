@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')
-    ->get('/message', function (Request $request) {
-        return ;
-    });
+Route::middleware('auth:sanctum')->post('/message', MessageController::class)->name('message.post');
