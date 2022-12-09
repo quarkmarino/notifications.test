@@ -22,7 +22,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'phone' => fake()->unique()->phoneNumber(),
+            'phone_number' => fake()->unique()->phoneNumber(),
             'subscribed' => collect(CategoryEnum::values())->random(mt_rand(1, 3)),
             'channels' => collect(ChannelEnum::values())->random(mt_rand(1, 3)),
             'email_verified_at' => now(),
@@ -40,8 +40,8 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'name' => 'Ad Min',
-            'email' => 'admin@notification.test',
-            'phone' => '555-555-5555',
+            'email' => 'admin@notifications.test',
+            'phone_number' => '555-555-5555',
             'subscribed' => [],
             'channels' => [],
         ]);

@@ -4,7 +4,7 @@ namespace App\Services\Notifications\Traits;
 
 use Illuminate\Support\Facades\Log;
 
-trait LogNotificationsTrait
+trait LogNotifications
 {
     public function logNotifyAction()
     {

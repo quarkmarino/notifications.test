@@ -7,7 +7,7 @@ use App\Services\Notifications\Traits;
 
 class PushNotifier extends BaseNotifier
 {
-    use Traits\LogNotificationsTrait;
+    use Traits\LogNotifications;
 
     public function notify()
     {

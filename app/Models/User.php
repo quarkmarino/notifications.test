@@ -63,7 +63,7 @@ class User extends Authenticatable implements NotifiableContract
 
     public function getNotifiableId()
     {
-        return $this->only(['id', 'name', 'email', 'phone']);
+        return $this->only(['id', 'name', 'email', 'phone_number']);
     }
 
     # Accessors

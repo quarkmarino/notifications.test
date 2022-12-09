@@ -1,66 +1,178 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+<!-- PROJECT LOGO -->
+<br />
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://github.com/quarkmarino/notifications.test">
+    <img src="logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">A full stack demo project of a notifications with Laravel, Livewire and VueJs</h3>
+
+  <p align="center">
+    Notification Test Demo Site
+    <br />
+    <a href="http://marianoescalera.me/login">View Demo</a>
+  </p>
 </p>
 
-## About Laravel
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#categories-and-channels">Categories & Channels</a></li>
+    <li><a href="#notification-types">Notification Types</a></li>
+    <li><a href="#stubbing-and-logging">Stubbing & Logging</a></li>
+    <li><a href="#users">Users</a></li>
+    <li><a href="#notifications-form">Notifications Form</a></li>
+    <li><a href="#evaluations">Evaluations</a></li>
+    <li><a href="#instalation">Installation</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Categories & Channels
+Have to create a notification system that has the ability to receive a message and depending on the
+category and subscribers, notify these users in the channels they are registered.
+It will be 3 message categories:
+▪ Sports
+▪ Finance
+▪ Movies
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Notification Types
+And there will be 3 types of notifications, each type should have its own class to manage the logic of
+sending the message independently.
+▪ SMS
+▪ E-Mail
+▪ Push Notification
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Stubbing & Logging
+No message will actually be sent or the need to communicate with any external APIs, only will register
+the sent notification in an archive of Logs or in a database.
+In the log, it will need to save all the information necessary to identify that the notification has been
+sent correctly to the respective subscriber,such asthe type of message, type of notification, user data,
+time, etc.
 
-## Learning Laravel
+# Users
+No user administration is required, you can use a Mock of users in the source code, and they must
+have the following information:
+• ID
+• Name
+• Email
+• Phone number
+• Subscribed [ ] here you need to list all the categories where the user is subscribed
+• Channels [ ] a list of the notification's channels (SMS | E-Mail | Push Notification)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Notifications Form
+As user interface you need to display 2 main elements.
+1. Submission form. A simple form to send the message, which will have 2 fields:
+• Category. List of available categories.
+• Message. Text area, only validate that the message is not empty.
+2. Log history. A list of all records in the log, sorted from newest to oldest.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Evaluations
+We will evaluate:
+• Architecture of the application and software design patterns.
+• OOP and Scalability (ready to add more types of notifications).
+• Manage requests to the Server by RESTful APIs.
+• For the tests, register at least 3 users with different configurations.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Installation
 
-## Laravel Sponsors
+1. Clone the repo
+    ```sh
+    git clone https://github.com/quarkmarino/notifications.test
+    ```
+2. Install Composer dependencies
+    ```sh
+    cd notifications.test
+    composer install
+    ```
+3. Fire Up Sail (requires Docker)
+    ```sh
+    sail up -d
+    ```
+4. Run artisan migrations
+    ```sh
+    sail art migrate
+    ```
+5. Run artisan db seeders (admin user only sedding or full db seeding)
+    5.1 Run admin user seeder only
+    ```sh
+    sail art db:seed
+    ```
+6. Visit http://notifications.test
+    6.1 login with the following credentials
+      user: admin@notifications.test
+      password: password
+    6.1 visit http://notifications.test/livewire
+      Post a message from the form (via Livewire)
+    6.2 visit http://notifications.test/vuejs
+      Post a message from the form (via VueJs)
+    6.3 visit http://notifications.test/logs
+      Inspect the logs table
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+# Archiecture explanation
 
-### Premium Partners
+## Notification Service
+Of course laravel 9 now ships with a full fledged Notification system out of the box,
+however a custom implementation was required by the test, it is as follows.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+The main "Notification Service" classes are contained within the `app\Services\Notifications` folder
 
-## Contributing
+### Contracts
+Three contracts must be implemented by the different classes involved
+- NotifiableContract
+  - Entity Classes that are expected to represent or at least define the destinatary of the Notifications must implement this contract
+- NotificationContract
+  - Classes that represent a container somehow of the information that the Notifiables should be notified of, must implement this contract
+- NotifierContract
+  - Notifier Classes that defines the mechanisms to actually send the notifications, connecting to the API, sending data, pushin, logging, broadcasting, etc. should implement this contract
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Notifiers
+- BaseNotifier (an abstract class that receives a Notifiable and a Notification instances in its constructor)
+  - EmailNotifier (should implements the Email notification mechanics)
+  - PushNotifier (should implements the Push notification mechanics)
+  - SmsNotifier (should implements the Sms notification mechanics)
+  - "WhatEverNotifier" (should implements the WhatEver notification mechanics)
 
-## Code of Conduct
+### Traits
+- ShouldBeNotified
+  - Utilizes the Visitor design pattern to provide the Notifiables with a simple mechanic to get notified themselves via the `notifyBy` method, which expects a Notifier of some type (Email, Push, SMS, ...)
+  - It defines a set of methods that provides a terse API to notify the Notifiable by any of the already existing Notifiers, quickly and easily.
+- LogNotifications
+  - It defines a simple method that Logs the Notifiable and Notification ran by a Notifiers in the DB (just for demostration (logging) purposes of the test).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Models
+- User (Notifiable)
+- Message (Notification)
 
-## Security Vulnerabilities
+# Getting notified
+The process is event driven, i.e. when the Message is `created`, it triggers the MessageCreated Event, for which the SendNotification Listener is listening.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+It then runs the "NotifyUsersAction" Action which is actually in charge of fetching the Users and executing the `notifyBy` accodingly to the channels the User has configured.
 
+Since we are actually calling the `notifyByMail`, `notifyByPush` and `notifyBySms` methods that receive the Notification, the propper Notifier (with its respective required Notifiable and Notification instances) class is being instanciated for us automatically and then the `notify` method is being called.
+
+This method just calls the `logNotifyAction` that logs the Notifiable, Notification and Notifier details to the DB (for demo purposes).
+
+# From CLI & Queuing
+Since the process is Event driven by the `created` event on the Message (Notification) model, whenever a new Message is stored in the DB, it is automatically used to notify the Users (Notifiables).
+
+In that case even if the Message is created from a CLI command, such as "SendMessageCommand" it will trigger the notification process.
+
+Now it can be easily queued, since the listener is the one calling the NotifyUsersAction, for an unobstrusive Notification sending operation.
+
+# On Enums
+PHP8.1 Enums ar fantastic for Categorical data and avoiding sometimes a very small table in the DB, it also provides a simple way to transform and map the actual enums to other practical values, such as the respective icon class or font color, etc. for certain category or channel for example.
+
+<!-- LICENSE -->
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+## Contact
+
+Jose Mariano Escalera Sierra - [@quarkmarino](https://twitter.com/quarkmarino) - mariano.pualiu@gmail.com
+
+Project Link: [https://github.com/quarkmarino/notifications.test](https://github.com/quarkmarino/notifications.test)

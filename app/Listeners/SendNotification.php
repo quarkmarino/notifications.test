@@ -29,6 +29,8 @@ class SendNotification
      */
     public function handle(MessageCreated $event)
     {
-        NotifyUsersAction::ofMessage($event->message);
+        if ($event->message instanceof NotificationContract) {
+            NotifyUsersAction::ofMessage($event->message);
+        }
     }
 }

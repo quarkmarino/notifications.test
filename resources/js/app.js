@@ -7,18 +7,6 @@
 import './bootstrap';
 import { createApp } from 'vue';
 
-// import { i18nVue } from 'laravel-vue-i18n'
-
-// import VueI18n from 'vue-i18n';
-// import Locale from './lang.dis.js';
-
-// Vue.use(VueI18n);
-// const lang = localStorage.getItem('locale') || 'en';
-// const i18n = new VueI18n({
-//     locale: lang,
-//     messages: Locale
-//  });
-
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -26,17 +14,6 @@ import { createApp } from 'vue';
  */
 
 const app = createApp({})
-    // .use(axios, {
-    //     baseUrl: 'http://notification.test/',
-    // })
-    // .use(i18nVue, {
-        // lang: 'en',
-        // resolve: lang => import(`../../lang/${lang}.json`),
-        // resolve: async lang => {
-        //     const langs = import.meta.glob('../../lang/*.json');
-        //     return await langs[`../../lang/${lang}.json`]();
-        // }
-    // });
 
 // import ExampleComponent from './components/ExampleComponent.vue';
 // app.component('example-component', ExampleComponent);

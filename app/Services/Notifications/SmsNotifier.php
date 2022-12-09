@@ -7,7 +7,7 @@ use App\Services\Notifications\Traits;
 
 class SmsNotifier extends BaseNotifier
 {
-    use Traits\LogNotificationsTrait;
+    use Traits\LogNotifications;
 
     public function notify()
     {
