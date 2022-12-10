@@ -114,7 +114,7 @@ We will evaluate:
     6.3 visit http://notifications.test/logs
       Inspect the logs table
 
-# Archiecture explanation
+# Architecture explanation
 
 ## Notification Service
 Of course laravel 9 now ships with a full fledged Notification system out of the box,
