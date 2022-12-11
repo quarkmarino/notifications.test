@@ -76,7 +76,7 @@ We will evaluate:
 • Manage requests to the Server by RESTful APIs.
 • For the tests, register at least 3 users with different configurations.
 
-### Installation
+# Installation
 
 1. Clone the repo
     ```sh
